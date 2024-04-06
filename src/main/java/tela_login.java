@@ -1,8 +1,14 @@
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,7 +18,7 @@ import javax.swing.JTextField;
 public class tela_login extends JFrame{
     JPasswordField senha_login;
     JTextField email_login;
-    JLabel texto_senha, texto_email, mensage, title;
+    JLabel texto_senha, texto_email, title;
     JButton btn_cadastro, btn_login;
     
     
@@ -61,9 +67,52 @@ public class tela_login extends JFrame{
         btn_cadastro.setBounds(25 ,200, 125, 25);
         this.add(btn_cadastro);
         
+        
+        
+        
+        
+        btn_cadastro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tela_cadastro iniciar_cadastro;
+                try {
+                    iniciar_cadastro = new tela_cadastro();
+                    iniciar_cadastro.iniciarcadastro();
+                } catch (IOException ex) {
+                    Logger.getLogger(tela_login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        });
+        
+        
+        
+        
+        btn_login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               String email = email_login.getText();
+               String senha = senha_login.getText();
+               
+               EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.mycompany_gerenciadortarefas_jar_1.0-SNAPSHOTPU");
+               banco_config banco_config = new banco_config(entityManagerFactory);
+               
+               boolean verificar_login = banco_config.verificarCredenciais(email, senha);
+               if (verificar_login) {
+                   System.out.println("correto");
+               }else{
+                   System.out.println("sem login");
+               }
+               
+               
+            }
+        });
     }
     
     public void iniciarlogin(){
         this.setVisible(true);
     }
+    
+    
+    
 }
