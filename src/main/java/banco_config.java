@@ -1,36 +1,29 @@
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
-public class banco_config {
-    private EntityManagerFactory entityManagerFactory;
-
-    public banco_config(EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
-    }
+public class banco_config{
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_gerenciadortarefas_jar_1.0-SNAPSHOTPU");
+    EntityManager em = emf.createEntityManager();
     
-    public boolean verificarCredenciais(String email, String senha) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            TypedQuery<Pessoa> query = entityManager.createQuery(
-            "SELECT pessoa FROM Pessoa pessoa WHERE pessoa.email = :email", Pessoa.class);
+    
+    
+         //Verificar Login do Usuario
+        public boolean verificar_login(String email, String senha) {
 
-            query.setParameter("email", email);
-            Pessoa pessoa = query.getSingleResult(); 
+        Query query = em.createQuery("SELECT u FROM pessoas u WHERE u.email = :email");
+        query.setParameter("email", "fael@gmail.com");
 
-            if (pessoa != null && pessoa.getSenha().equals(senha)) {
-                return true; 
+            try {
+                Pessoa usuario = (Pessoa) query.getSingleResult(); 
+                return usuario.getSenha().equals(senha); 
+            } catch (NoResultException e) {
+                return false; 
             }
-        } catch (NoResultException e) {
-            // Nenhum resultado encontrado para o email fornecido
-            e.printStackTrace();
-        } catch (Exception e) {
-            // Outra exceção ocorreu
-            e.printStackTrace();
-        } finally {
-            entityManager.close();
         }
-        return false; 
-    }
+
+
 }

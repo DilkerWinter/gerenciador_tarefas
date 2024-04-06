@@ -84,35 +84,24 @@ public class tela_login extends JFrame{
                 
             }
         });
-        
-        
-        
+
         
         btn_login.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               String email = email_login.getText();
-               String senha = senha_login.getText();
-               
-               EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.mycompany_gerenciadortarefas_jar_1.0-SNAPSHOTPU");
-               banco_config banco_config = new banco_config(entityManagerFactory);
-               
-               boolean verificar_login = banco_config.verificarCredenciais(email, senha);
-               if (verificar_login) {
-                   System.out.println("correto");
-               }else{
-                   System.out.println("sem login");
-               }
-               
-               
+        @Override
+       public void actionPerformed(ActionEvent e) {
+            banco_config bancoConfig = new banco_config();
+            boolean loginvalido = bancoConfig.verificar_login(email_login.getText(), senha_login.getText());
+                 if (loginvalido) {
+                     System.out.println("esta no banco tudo certo amem");
+                } else {
+                     System.out.println("deu merda");
+                }
             }
         });
-    }
+
+}
     
     public void iniciarlogin(){
         this.setVisible(true);
     }
-    
-    
-    
 }
