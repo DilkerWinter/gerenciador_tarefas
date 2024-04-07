@@ -1,15 +1,20 @@
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class app extends JFrame {
-
+    JButton btn_cadastro;
+    
     public app() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 800);
@@ -25,18 +30,20 @@ public class app extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         
-        JMenuBar menubar = new JMenuBar();
-        JMenu filemenu = new JMenu("File");
-        File icon_add_task = new File("src/main/java/icon_img/add_task.png");
-        filemenu.setIcon((Icon) icon_add_task);
+        btn_cadastro = new JButton("Cadastrar");
+        btn_cadastro.setBounds(25 ,200, 125, 25);
+        this.add(btn_cadastro);
         
-        
-        menubar.add(filemenu);
-        this.setJMenuBar(menubar); 
-        
-        
-        
+        btn_cadastro.addActionListener(new ActionListener() {
+        @Override
+         public void actionPerformed(ActionEvent e) {
+        Pessoa pessoaLogada = UsuarioLogado.getPessoa();
+        System.out.println(pessoaLogada.getEmail());
+    }
+});
+
         
         
         

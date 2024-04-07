@@ -21,8 +21,10 @@ public class banco_config{
             Pessoa pessoa = (Pessoa) query.getSingleResult();
 
             if (pessoa != null) {
-               
+                UsuarioLogado.setPessoa(pessoa);
                 if (pessoa.getSenha().equals(senha)) {
+                    
+                    
                     return true; 
                 } else {
                     return false;
@@ -69,7 +71,6 @@ public class banco_config{
                 transaction.rollback();
             }
             return "Erro no Sistema";
-        }    
-            
-        }
+        }       
+    }
 }
