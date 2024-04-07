@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +19,7 @@ import javax.swing.JTextField;
 public class tela_login extends JFrame{
     JPasswordField senha_login;
     JTextField email_login;
-    JLabel texto_senha, texto_email, title;
+    JLabel texto_senha, texto_email, title , mensagem;
     JButton btn_cadastro, btn_login;
     
     
@@ -67,7 +68,10 @@ public class tela_login extends JFrame{
         btn_cadastro.setBounds(25 ,200, 125, 25);
         this.add(btn_cadastro);
         
-        
+        mensagem = new JLabel();
+        mensagem.setBounds(25, 50, 300, 25);
+        mensagem.setForeground(Color.red);
+        this.add(mensagem);
         
         
         
@@ -78,6 +82,7 @@ public class tela_login extends JFrame{
                 try {
                     iniciar_cadastro = new tela_cadastro();
                     iniciar_cadastro.iniciarcadastro();
+                    setVisible(false);
                 } catch (IOException ex) {
                     Logger.getLogger(tela_login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -91,10 +96,12 @@ public class tela_login extends JFrame{
        public void actionPerformed(ActionEvent e) {
             banco_config bancoConfig = new banco_config();
             boolean loginvalido = bancoConfig.verificar_login(email_login.getText(), senha_login.getText());
-                 if (loginvalido) {
-                     System.out.println("esta no banco tudo certo amem");
+            app app = new app(); 
+                if (loginvalido) {
+                     dispose();
+                     app.iniciarApp();
                 } else {
-                     System.out.println("deu merda");
+                     mensagem.setText("Email ou Senha Inválida");
                 }
             }
         });

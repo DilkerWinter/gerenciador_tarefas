@@ -1,7 +1,12 @@
 
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,7 +17,7 @@ import javax.swing.JTextField;
 public class tela_cadastro extends JFrame{
     JPasswordField senha_cadastro;
     JTextField email_cadastro, nome_cadastro;
-    JLabel texto_senha, texto_email, texto_nome, title;
+    JLabel texto_senha, texto_email, texto_nome, title, mensagem;
     JButton btn_cadastrar;
     
     
@@ -64,6 +69,49 @@ public class tela_cadastro extends JFrame{
         btn_cadastrar.setBounds(175 ,250, 100, 25);
         this.add(btn_cadastrar);
         
+        mensagem = new JLabel();
+        mensagem.setBounds(25, 50, 300, 25);
+        mensagem.setForeground(Color.red);
+        this.add(mensagem);
+        
+        
+        
+        btn_cadastrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                banco_config bancoConfig = new banco_config();
+                String validar_cadastro = bancoConfig.executar_cadastro(nome_cadastro.getText(), email_cadastro.getText(), senha_cadastro.getText());
+                
+                switch (validar_cadastro) {
+                    case "ok":
+                        dispose();
+                    {
+                        try {
+                            tela_login iniciar_login = new tela_login();
+                            iniciar_login.iniciarlogin();
+                        } catch (IOException ex) {
+                            Logger.getLogger(tela_cadastro.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                        
+                        break;
+
+                    case "Preencha todos os campos":
+                        mensagem.setText("Preencha todos os campos");
+                        break;
+                    case "Email já registrado":
+                        mensagem.setText("Email já registrado");
+                        break;
+                    case "Erro no Sistema":
+                        mensagem.setText("Erro no Sistema");
+                        break;
+                        
+                    default:
+                        mensagem.setText("Ai nem eu posso te ajuda");
+                }
+            
+            }
+        });
     }
     
     public void iniciarcadastro(){
