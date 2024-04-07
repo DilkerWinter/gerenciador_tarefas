@@ -18,7 +18,7 @@ public class tela_cadastro extends JFrame{
     JPasswordField senha_cadastro;
     JTextField email_cadastro, nome_cadastro;
     JLabel texto_senha, texto_email, texto_nome, title, mensagem;
-    JButton btn_cadastrar;
+    JButton btn_cadastrar, btn_voltar;
     
     
     tela_cadastro() throws IOException {
@@ -74,6 +74,9 @@ public class tela_cadastro extends JFrame{
         mensagem.setForeground(Color.red);
         this.add(mensagem);
         
+        btn_voltar = new JButton("Voltar");
+        btn_voltar.setBounds(25 ,250, 100, 25);
+        this.add(btn_voltar);
         
         
         btn_cadastrar.addActionListener(new ActionListener() {
@@ -112,7 +115,19 @@ public class tela_cadastro extends JFrame{
             
             }
         });
-    }
+        
+        btn_voltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            dispose();
+            try {
+                    tela_login iniciar_login = new tela_login();
+                    iniciar_login.iniciarlogin();
+                } catch (IOException ex) {Logger.getLogger(tela_cadastro.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+            }
+        });
+}
     
     public void iniciarcadastro(){
         this.setVisible(true);

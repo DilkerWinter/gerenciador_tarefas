@@ -3,6 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -39,8 +42,12 @@ public class app extends JFrame {
         btn_cadastro.addActionListener(new ActionListener() {
         @Override
          public void actionPerformed(ActionEvent e) {
-        Pessoa pessoaLogada = UsuarioLogado.getPessoa();
-        System.out.println(pessoaLogada.getEmail());
+            try {
+                criador_tarefa iniciar_criador_tarefa = new criador_tarefa();
+                iniciar_criador_tarefa.criar_tarefa();
+            } catch (ParseException ex) {
+                Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 });
 

@@ -82,7 +82,7 @@ public class tela_login extends JFrame{
                 try {
                     iniciar_cadastro = new tela_cadastro();
                     iniciar_cadastro.iniciarcadastro();
-                    setVisible(false);
+                    dispose();
                 } catch (IOException ex) {
                     Logger.getLogger(tela_login.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -106,7 +106,7 @@ public class tela_login extends JFrame{
             }
         });
 
-}
+    }
     
     public void iniciarlogin(){
         this.setVisible(true);

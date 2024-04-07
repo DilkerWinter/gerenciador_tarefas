@@ -1,6 +1,8 @@
 app$1.class
-tarefas.class
+criador_tarefa$1.class
+Tarefas.class
 banco_config.class
+tela_cadastro$2.class
 Pessoa.class
 tela_cadastro.class
 UsuarioLogado.class
@@ -10,4 +12,6 @@ Main.class
 tela_cadastro$1.class
 tela_login$1.class
 Pessoa_.class
+criador_tarefa.class
 app.class
+Tarefas_.class
