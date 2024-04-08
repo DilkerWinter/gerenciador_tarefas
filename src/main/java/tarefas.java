@@ -45,25 +45,20 @@ public class Tarefas {
     //GETTER E SETTER
     
     //DATA CRIADA    (Recebe String e transforma em data)
-    public void setDataCriadaString(String dataCriadaString) throws ParseException{
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        this.dataCriado = formato.parse(dataCriadaString);
+    public void setDataCriada(Date datacriada) throws ParseException{
+        this.dataCriado = datacriada; 
     }
-    public String getDataCriadaString(){
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        
-        return formato.format(dataCriado);
+    public Date getDataCriada(){
+        return this.dataCriado;
     }
     
     //DATA ENTREGA
-    public void setDataEntregaString(String dataEntregaString) throws ParseException {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        this.dataEntrega = formato.parse(dataEntregaString);
+    public void setDataEntrega(Date dataentrega) throws ParseException {
+        this.dataEntrega = dataentrega;
     }
     
-    public String getDataEntregaString() {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        return formato.format(dataEntrega);
+    public Date getDataEntrega() {
+        return dataEntrega;
     }
     
     //TITULO

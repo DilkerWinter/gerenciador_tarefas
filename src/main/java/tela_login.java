@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,7 +27,7 @@ public class tela_login extends JFrame{
         this.setTitle("Login");
         this.setLocationRelativeTo(null);
         this.setLayout(null);
-        this.setResizable(true);
+        this.setResizable(false);
         
         try {
             File iconFile = new File("src/main/java/icon_img/task_icon.png");

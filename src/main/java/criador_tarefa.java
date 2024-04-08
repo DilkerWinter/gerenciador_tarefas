@@ -1,25 +1,24 @@
 
 import java.awt.Color;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.text.MaskFormatter;
 import com.toedter.calendar.JDateChooser;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -45,12 +44,11 @@ public class criador_tarefa extends JFrame{
         this.setLayout(null);
         this.setResizable(false);
         try {
-            File iconFile = new File("src/main/java/icon_img/task_icon.png");
+            File iconFile = new File("src/main/java/icon_img/add_task.png");
             Image iconImage = ImageIO.read(iconFile);
             setIconImage(iconImage);
         } catch (IOException e) {
             e.printStackTrace();
-          
         }
         
         //Texto principal
@@ -60,10 +58,9 @@ public class criador_tarefa extends JFrame{
         this.add(app_title);
         
         //Descricao principal
-        app_desc = new JLabel("(Preencha todos os campos)");
+        app_desc = new JLabel();
         app_desc.setBounds(155, 25, 180, 25);
         this.add(app_desc);
-        
         //Titulo da tarefa
         texto_titulo = new JLabel("Insira o Titulo:");
         texto_titulo.setBounds(25, 50, 90, 20);
@@ -114,14 +111,23 @@ public class criador_tarefa extends JFrame{
         this.add(texto_responsavel);
         responsavel = new JComboBox();
         responsavel.setBounds(371, 270, 90, 25);
-        banco_config banco = new banco_config();
-        List<Long> nomes = banco.buscarNomesPessoas();
-        DefaultComboBoxModel<String> modeloNomes = new DefaultComboBoxModel<>(nomes.toArray(new String[0]));
-        responsavel.setModel(modeloNomes);
+        
+        // Adicionando o nome do usuário logado à lista de nomes
         Pessoa pessoalogada = UsuarioLogado.getPessoa();
-        responsavel.setSelectedItem(pessoalogada.getNome());
+        List<String> nomes = new ArrayList<>();
+        nomes.add(pessoalogada.getNome());
+        banco_config banco = new banco_config();
+        for (Pessoa pessoa : banco.buscarTodasPessoas()) {
+                if (!pessoa.getNome().equals(pessoalogada.getNome())) {
+                    nomes.add(pessoa.getNome());    
+                 }
+        }   
+        DefaultComboBoxModel modeloNomes = new DefaultComboBoxModel(nomes.toArray());
+        responsavel.setModel(modeloNomes);
         this.add(responsavel);
-    
+        
+        
+        
         //Botao Cancelar
         btn_Cancelar = new JButton("Cancelar");
         btn_Cancelar.setBounds(25 ,420, 100, 25);
@@ -132,17 +138,35 @@ public class criador_tarefa extends JFrame{
         btn_CriarTarefa.setBounds(332, 420, 130, 25);
         this.add(btn_CriarTarefa);
     
-    
-    
+       
+        
         btn_Cancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
         });
-    
+        
+        btn_CriarTarefa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                banco_config bancoConfig = new banco_config();
+                try {
+                    bancoConfig.criarTarefa(tarefa_titulo.getText(), tarefa_descricao.getText(), data_atual(), dataFim.getDate(), false, UsuarioLogado.getPessoa(), isPrioridade(), responsavel.getSelectedItem().toString());
+                    
+                    
+                    
+                    
+                } catch (ParseException ex) {
+                    Logger.getLogger(criador_tarefa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        });
+        
+        
+
     }
-    
     
     
     
@@ -154,12 +178,14 @@ public class criador_tarefa extends JFrame{
             return false;
         }
     }
-    
-    
-    public void data_atual() {
+
+    //Pega a data de hoje
+    public Date data_atual() {
         LocalDate dataHoje = LocalDate.now();
         String dataHojeFormatada = dataHoje.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         data_inicio.setText(dataHojeFormatada);
+        Date datahoje_formatada_sql = java.sql.Date.valueOf(dataHoje);
+        return datahoje_formatada_sql;
     }
     
     
@@ -168,6 +194,7 @@ public class criador_tarefa extends JFrame{
         this.setVisible(true);
     }
     
-    
-    
+        public String test(String test){
+        return test;
+        }
 }

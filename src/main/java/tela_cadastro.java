@@ -96,7 +96,6 @@ public class tela_cadastro extends JFrame{
                             Logger.getLogger(tela_cadastro.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
-                        
                         break;
 
                     case "Preencha todos os campos":
@@ -104,6 +103,9 @@ public class tela_cadastro extends JFrame{
                         break;
                     case "Email já registrado":
                         mensagem.setText("Email já registrado");
+                        break;
+                    case "Nome já registrado":
+                        mensagem.setText("Nome já registrado");
                         break;
                     case "Erro no Sistema":
                         mensagem.setText("Erro no Sistema");

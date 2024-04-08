@@ -1,4 +1,5 @@
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -14,7 +15,7 @@ public class banco_config{
     
     
     
-         //Verificar Login do Usuario
+        //Verificar Login do Usuario
         public boolean verificar_login(String email, String senha) {
         Query query = em.createQuery("SELECT p FROM Pessoa p WHERE p.email = :email");
         query.setParameter("email", email);
@@ -23,10 +24,8 @@ public class banco_config{
             Pessoa pessoa = (Pessoa) query.getSingleResult();
 
             if (pessoa != null) {
-                UsuarioLogado.setPessoa(pessoa);
                 if (pessoa.getSenha().equals(senha)) {
-                    
-                    
+                    UsuarioLogado.setPessoa(pessoa);
                     return true; 
                 } else {
                     return false;
@@ -51,11 +50,17 @@ public class banco_config{
         }
         
         
-        Query query = em.createQuery("SELECT COUNT (p) FROM Pessoa p WHERE p.email = :email");
-        query.setParameter("email", email);
-        long count = (long) query.getSingleResult();
-        if (count > 0){
+        Query queryEmail = em.createQuery("SELECT COUNT (p) FROM Pessoa p WHERE p.email = :email");
+        queryEmail.setParameter("email", email);
+        long countEmail = (long) queryEmail.getSingleResult();
+        if (countEmail > 0){
             return "Email já registrado";
+        }
+        Query querynome = em.createQuery("SELECT COUNT (p) FROM Pessoa p WHERE p.nome = :nome");
+        querynome.setParameter("nome", nome);
+        long countNome = (long) querynome.getSingleResult();
+        if (countNome > 0){
+            return "Nome já resgistrado";
         }
         
         
@@ -85,16 +90,49 @@ public class banco_config{
         return query.getResultList();
     }
     
-    /*public String criarTarefa(String titulo, String descricao, Date data_criada, Date data_finalizada, boolean concluida, int criador , boolean prioridade , int responsavel){
+    public List<Pessoa> buscarTodasPessoas() {
+        Query query = em.createQuery("SELECT p FROM Pessoa p");
+        return query.getResultList();
+    }
+    
+    public Pessoa buscarPessoaPorNome(String nome){
+        Query query = em.createQuery("SELECT p FROM Pessoa p WHERE p.nome = :nome");
+        query.setParameter("nome", nome);
+        return (Pessoa) query.getSingleResult();
+    }
+
+    
+    public String criarTarefa(String titulo, String descricao, Date data_criada, Date data_finalizada, boolean concluida, Pessoa criador , boolean prioridade , String responsavel) throws ParseException{
+
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        if(titulo == null || descricao == null || data_criada == null || data_finalizada == null || concluida == null || criador == null || prioridade == null || responsavel){
-        return "Preencha Todos os Campos";
-    }
+
+        if(titulo == null || titulo.isEmpty() || descricao == null || descricao.isEmpty() || data_finalizada == null ){
+            return "Preencha Todos os Campos";
+        }
+        
+        Pessoa pessoaResponsavel = buscarPessoaPorNome(responsavel);
         
         
         
         
+        
+        
+        
+        
+        Tarefas tarefa = new Tarefas();
+        tarefa.setTitulo(titulo);
+        tarefa.setDescricao(descricao);
+        tarefa.setDataCriada(data_criada);
+        tarefa.setDataEntrega(data_finalizada);
+        tarefa.setConcluida(concluida);
+        tarefa.setCriador(criador);
+        tarefa.setPrioridade(prioridade);
+        tarefa.setResponsavel(pessoaResponsavel);
+
+        em.persist(tarefa);
+        transaction.commit();
         return "ok";
-    }*/
+    }
+
 }
