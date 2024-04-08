@@ -1,4 +1,6 @@
 
+import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -73,4 +75,26 @@ public class banco_config{
             return "Erro no Sistema";
         }       
     }
+        
+    public List<Long> buscarIdsPessoas() {
+        Query query = em.createQuery("SELECT p.ID FROM Pessoa p");
+        return query.getResultList();
+    }
+    public List<Long> buscarNomesPessoas() {
+        Query query = em.createQuery("SELECT p.nome FROM Pessoa p");
+        return query.getResultList();
+    }
+    
+    /*public String criarTarefa(String titulo, String descricao, Date data_criada, Date data_finalizada, boolean concluida, int criador , boolean prioridade , int responsavel){
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        if(titulo == null || descricao == null || data_criada == null || data_finalizada == null || concluida == null || criador == null || prioridade == null || responsavel){
+        return "Preencha Todos os Campos";
+    }
+        
+        
+        
+        
+        return "ok";
+    }*/
 }

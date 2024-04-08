@@ -19,7 +19,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -112,6 +114,12 @@ public class criador_tarefa extends JFrame{
         this.add(texto_responsavel);
         responsavel = new JComboBox();
         responsavel.setBounds(371, 270, 90, 25);
+        banco_config banco = new banco_config();
+        List<Long> nomes = banco.buscarNomesPessoas();
+        DefaultComboBoxModel<String> modeloNomes = new DefaultComboBoxModel<>(nomes.toArray(new String[0]));
+        responsavel.setModel(modeloNomes);
+        Pessoa pessoalogada = UsuarioLogado.getPessoa();
+        responsavel.setSelectedItem(pessoalogada.getNome());
         this.add(responsavel);
     
         //Botao Cancelar
@@ -138,6 +146,14 @@ public class criador_tarefa extends JFrame{
     
     
     
+    //Verifica se esta como prioridade
+    public boolean isPrioridade() {
+        if(prioridade.isSelected()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
     
     public void data_atual() {

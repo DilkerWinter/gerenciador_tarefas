@@ -29,7 +29,7 @@ public class tela_login extends JFrame{
         this.setTitle("Login");
         this.setLocationRelativeTo(null);
         this.setLayout(null);
-        this.setResizable(false);
+        this.setResizable(true);
         
         try {
             File iconFile = new File("src/main/java/icon_img/task_icon.png");
