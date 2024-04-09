@@ -1,6 +1,7 @@
 
 import java.util.List;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -10,7 +11,8 @@ public class component_Tarefas extends JPanel{
     boolean prioridade;
     
     public component_Tarefas(){
-
+ 
+    
     
         
         

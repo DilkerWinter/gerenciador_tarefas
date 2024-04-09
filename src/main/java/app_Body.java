@@ -76,4 +76,3 @@ public class app_Body extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 }
 
-

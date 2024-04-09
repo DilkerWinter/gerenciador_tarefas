@@ -91,15 +91,6 @@ public class tela_cadastro extends JFrame{
                     case "ok":
                        mensagem.setText("Conta Criada com Sucesso!");
                        mensagem.setForeground(Color.GREEN);
-
-                    {
-                        try {
-                            tela_login iniciar_login = new tela_login();
-                            iniciar_login.iniciarlogin();
-                        } catch (IOException ex) {
-                            Logger.getLogger(tela_cadastro.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
                         break;
 
                     case "Preencha todos os campos":
