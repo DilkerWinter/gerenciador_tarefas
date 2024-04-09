@@ -4,10 +4,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class app_Header_novo extends JPanel{
+public class app_Header extends JPanel{
     JButton btn_criarTarefa;
     JLabel app_title;
-    public app_Header_novo(){
+    public app_Header(){
         this.setSize(1200,90);
         this.setLayout(null);
         this.setBackground(new Color(0x352F44));
