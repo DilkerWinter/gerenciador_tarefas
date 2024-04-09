@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JButton;
@@ -8,7 +10,7 @@ import javax.swing.JPanel;
 
 public class component_Tarefas extends JPanel {
     JLabel titulo, desc, data_entrega, dataentrega_label, criador, prioridade_text, criador_text;
-    JButton concluida;
+    JButton btn_concluida;
 
     public component_Tarefas(Tarefas tarefa) {
         this.setSize(1035, 500); 
@@ -47,13 +49,13 @@ public class component_Tarefas extends JPanel {
         dataentrega_label.setForeground(new Color(0xB9B4C7));
         this.add(dataentrega_label);
         
-        concluida = new JButton("Concluir Tarefa");
-        concluida.setVisible(true);
-        concluida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        concluida.setForeground(new Color(0xFAF0E6));
-        concluida.setBackground(new Color(0xB9B4C7));
-        concluida.setBounds(865, 70, 135, 30);
-        this.add(concluida);
+        btn_concluida = new JButton("Concluir Tarefa");
+        btn_concluida.setVisible(true);
+        btn_concluida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_concluida.setForeground(new Color(0xFAF0E6));
+        btn_concluida.setBackground(new Color(0xB9B4C7));
+        btn_concluida.setBounds(865, 70, 135, 30);
+        this.add(btn_concluida);
         
         //Prioridade para Tarefa
         if(tarefa.getPrioridade() == true){
@@ -77,6 +79,12 @@ public class component_Tarefas extends JPanel {
             criador.setVisible(true);
             this.add(criador);
         }
+        btn_concluida.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //matar tarefa e deletar do banco
+            }
+        });
         
     }
 }

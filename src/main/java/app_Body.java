@@ -22,6 +22,7 @@ public class app_Body extends JPanel{
         title_tarefas.setBounds(165, 10, 300, 35);
         this.add(title_tarefas);
         
+        //Apagar tudo e fazer um Jlist com os componentes das tarefas
         
         banco_config iniciarBanco = new banco_config();
         Pessoa pessoalogada = UsuarioLogado.getPessoa();
