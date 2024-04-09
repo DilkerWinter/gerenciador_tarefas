@@ -1,5 +1,10 @@
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,5 +33,18 @@ public class app_Header extends JPanel{
         app_title.setBounds(200, 20, 415, 50);
         
         this.add(app_title);
+        
+        btn_criarTarefa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tela_criador_tarefa iniciarCriadorTarefa = null;
+                try {
+                    iniciarCriadorTarefa = new tela_criador_tarefa();
+                } catch (ParseException ex) {
+                    Logger.getLogger(app_Header.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                iniciarCriadorTarefa.criar_tarefa();
+            }
+        });
     }
 }

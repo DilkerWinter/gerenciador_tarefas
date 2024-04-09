@@ -35,12 +35,17 @@ public class app_Body extends JPanel{
         
         panelTarefas.add(componenteTarefas);
         }
-        
-        scroll_tarefas = new JScrollPane(panelTarefas);
+        panelTarefas.setSize(1200, 600);
+        scroll_tarefas = new JScrollPane();
+        scroll_tarefas.setViewportView(panelTarefas);
+        scroll_tarefas.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll_tarefas.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        panelTarefas.setVisible(true);
         scroll_tarefas.setBackground(new Color(0xFAF0E6));
-        scroll_tarefas.setBounds(165, 60, 1035, 500);
+        scroll_tarefas.setBounds(165, 60, 1025, 500);
         this.add(scroll_tarefas);
-        this.repaint();
+        scroll_tarefas.revalidate();
+        scroll_tarefas.repaint();
     }
     
 }

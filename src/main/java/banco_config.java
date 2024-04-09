@@ -165,7 +165,6 @@ public class banco_config{
         String sqlQuery = "SELECT t FROM Tarefas t WHERE t.responsavel = :responsavel"; 
         Query query = em.createQuery(sqlQuery);
         query.setParameter("responsavel", pessoalogada);
-
         return query.getResultList();
     }
 
