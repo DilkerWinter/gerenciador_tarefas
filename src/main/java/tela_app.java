@@ -15,7 +15,7 @@ public class tela_app extends JFrame {
         this.setTitle("Organizador de Tarefas");
         this.setLayout(null);
         this.setLocationRelativeTo(null);
-        this.setResizable(true);
+        this.setResizable(false);
 
         try {
             File iconFile = new File("src/main/java/icon_img/task_icon.png");

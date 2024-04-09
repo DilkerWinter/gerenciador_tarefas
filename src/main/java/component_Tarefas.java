@@ -3,13 +3,14 @@ import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class component_Tarefas extends JPanel {
-    JLabel titulo, desc, data_entrega, dataentrega_label, criador, prioridade_text;
-    JCheckBox concluida;
+    JLabel titulo, desc, data_entrega, dataentrega_label, criador, prioridade_text, criador_text;
+    JButton concluida;
     boolean prioridade;
 
     public component_Tarefas(Tarefas tarefa) {
@@ -18,7 +19,7 @@ public class component_Tarefas extends JPanel {
         this.setLayout(null);
         this.setVisible(true);
         
-        
+        //Titulo da tarefa
         titulo = new JLabel(tarefa.getTitulo());
         titulo.setBounds(5, 20, 1000, 25);
         titulo.setVisible(true);
@@ -26,6 +27,7 @@ public class component_Tarefas extends JPanel {
         titulo.setFont(new Font("JetBrainsMono", Font.BOLD, 26));
         this.add(titulo);
         
+        //Descricao da tarefa
         desc = new JLabel(tarefa.getDescricao());
         desc.setBounds(5, 50, 1000, 25);
         desc.setFont(new Font("JetBrainsMono", Font.BOLD, 16));
@@ -33,6 +35,7 @@ public class component_Tarefas extends JPanel {
         desc.setForeground(new Color(0xFAF0E6));
         this.add(desc);
         
+        //Data de entrega final
         SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
         Date dataEntregaSQL = tarefa.getDataEntrega();
         String dataEntregaFormatada = formatoData.format(dataEntregaSQL);
@@ -41,19 +44,34 @@ public class component_Tarefas extends JPanel {
         data_entrega.setVisible(true);
         data_entrega.setForeground(new Color(0xB9B4C7));
         this.add(data_entrega);
-        
         dataentrega_label = new JLabel("Data de Entrega:");
         dataentrega_label.setBounds(843, 9, 100, 25);
         dataentrega_label.setVisible(true);
         dataentrega_label.setForeground(new Color(0xB9B4C7));
         this.add(dataentrega_label);
         
+        //Prioridade para Tarefa
         if(tarefa.getPrioridade() == true){
-            prioridade_text = new JLabel("Importante!");
+            prioridade_text = new JLabel("Urgente:");
             prioridade_text.setForeground(Color.red);
             prioridade_text.setBounds(5, 0, 100, 25);
             prioridade_text.setVisible(true);
             this.add(prioridade_text);
         }
+        
+        //Criador diferente
+        if(tarefa.getCriador() != tarefa.getResponsavel()){
+            criador_text = new JLabel("Criado Por:");
+            criador_text.setForeground(new Color(0xB9B4C7));
+            criador_text.setBounds(874, 25, 100, 25);
+            criador_text.setVisible(true);
+            this.add(criador_text);
+            criador = new JLabel(tarefa.getCriador().getNome());
+            criador.setForeground(new Color(0xB9B4C7));
+            criador.setBounds(941, 25, 100, 25);
+            criador.setVisible(true);
+            this.add(criador);
+        }
+        
     }
 }

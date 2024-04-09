@@ -205,8 +205,4 @@ public class tela_criador_tarefa extends JFrame{
     public void criar_tarefa(){
         this.setVisible(true);
     }
-    
-        public String test(String test){
-        return test;
-        }
 }

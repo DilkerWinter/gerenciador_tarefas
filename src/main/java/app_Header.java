@@ -27,10 +27,10 @@ public class app_Header extends JPanel{
         btn_criarTarefa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         this.add(btn_criarTarefa);
         
-        app_title = new JLabel("Criador de Tarefas");
+        app_title = new JLabel("Organizador de Tarefas");
         app_title.setFont(new java.awt.Font("Segoe UI", 1, 48));
         app_title.setForeground(new Color(0xFAF0E6));
-        app_title.setBounds(200, 20, 415, 50);
+        app_title.setBounds(200, 15, 700, 55);
         
         this.add(app_title);
         
