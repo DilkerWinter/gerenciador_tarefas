@@ -1,6 +1,3 @@
-
-
-
 import java.awt.Color;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -201,7 +198,7 @@ public class tela_criador_tarefa extends JFrame{
     }
     
     
-    
+    //Criar a tela
     public void criar_tarefa(){
         this.setVisible(true);
     }

@@ -2,16 +2,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class component_Tarefas extends JPanel {
     JLabel titulo, desc, data_entrega, dataentrega_label, criador, prioridade_text, criador_text;
     JButton concluida;
-    boolean prioridade;
 
     public component_Tarefas(Tarefas tarefa) {
         this.setSize(1035, 500); 
@@ -49,6 +46,14 @@ public class component_Tarefas extends JPanel {
         dataentrega_label.setVisible(true);
         dataentrega_label.setForeground(new Color(0xB9B4C7));
         this.add(dataentrega_label);
+        
+        concluida = new JButton("Concluir Tarefa");
+        concluida.setVisible(true);
+        concluida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        concluida.setForeground(new Color(0xFAF0E6));
+        concluida.setBackground(new Color(0xB9B4C7));
+        concluida.setBounds(865, 70, 135, 30);
+        this.add(concluida);
         
         //Prioridade para Tarefa
         if(tarefa.getPrioridade() == true){
