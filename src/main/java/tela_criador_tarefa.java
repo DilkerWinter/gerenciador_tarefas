@@ -1,4 +1,6 @@
 
+
+
 import java.awt.Color;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -25,7 +27,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 
-public class criador_tarefa extends JFrame{
+public class tela_criador_tarefa extends JFrame{
     
     JLabel app_title , app_desc , texto_titulo, texto_descricao, texto_DataInicio, texto_DataFim, data_inicio, texto_prioridade, texto_responsavel;
     JTextField tarefa_titulo;
@@ -36,7 +38,7 @@ public class criador_tarefa extends JFrame{
     JButton btn_Cancelar, btn_CriarTarefa;
     
     
-    criador_tarefa() throws ParseException {
+    tela_criador_tarefa() throws ParseException {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(500,500);
         this.setTitle("Criar Tarefa");
@@ -59,8 +61,9 @@ public class criador_tarefa extends JFrame{
         
         //Descricao principal
         app_desc = new JLabel();
-        app_desc.setBounds(155, 25, 180, 25);
+        app_desc.setBounds(155, 25, 200, 25);
         this.add(app_desc);
+        
         //Titulo da tarefa
         texto_titulo = new JLabel("Insira o Titulo:");
         texto_titulo.setBounds(25, 50, 90, 20);
@@ -152,13 +155,22 @@ public class criador_tarefa extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 banco_config bancoConfig = new banco_config();
                 try {
-                    bancoConfig.criarTarefa(tarefa_titulo.getText(), tarefa_descricao.getText(), data_atual(), dataFim.getDate(), false, UsuarioLogado.getPessoa(), isPrioridade(), responsavel.getSelectedItem().toString());
+                    String criarTarefa = bancoConfig.criarTarefa(tarefa_titulo.getText(), tarefa_descricao.getText(), data_atual(), dataFim.getDate(), false, UsuarioLogado.getPessoa(), isPrioridade(), responsavel.getSelectedItem().toString());
                     
-                    
-                    
-                    
+                    if(criarTarefa == "Preencha Todos os Campos"){
+                    app_desc.setText(criarTarefa);
+                    app_desc.setForeground(Color.RED);
+                    }else if(criarTarefa == "Esta Tarefa já foi Criada"){
+                    app_desc.setText(criarTarefa);
+                    app_desc.setBounds(167, 25, 200, 25);
+                    app_desc.setForeground(Color.RED);
+                    }else{
+                    app_desc.setText(criarTarefa);
+                    app_desc.setForeground(Color.GREEN);
+                    dispose();
+                    }
                 } catch (ParseException ex) {
-                    Logger.getLogger(criador_tarefa.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(tela_criador_tarefa.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             }

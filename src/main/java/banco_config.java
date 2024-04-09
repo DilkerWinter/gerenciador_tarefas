@@ -100,23 +100,49 @@ public class banco_config{
         query.setParameter("nome", nome);
         return (Pessoa) query.getSingleResult();
     }
+    
+    public boolean verificarTarefa(String titulo, String descricao, Date data_criado, Date data_finalizada, boolean concluida, Pessoa criador, boolean prioridade, Pessoa responsavel) {
+        String buscarJPQL = "SELECT COUNT(t) FROM Tarefas t " +
+                            "WHERE t.titulo = :titulo " +
+                            "AND t.descricao = :descricao " +
+                            "AND t.dataCriado = :dataCriado " +
+                            "AND t.dataEntrega = :dataEntrega " +
+                            "AND t.concluida = :concluida " +
+                            "AND t.criador = :criador " +
+                            "AND t.prioridade = :prioridade " +
+                            "AND t.responsavel = :responsavel";
 
+        Query query = em.createQuery(buscarJPQL);
+        query.setParameter("titulo", titulo);
+        query.setParameter("descricao", descricao);
+        query.setParameter("dataCriado", data_criado);
+        query.setParameter("dataEntrega", data_finalizada);
+        query.setParameter("concluida", concluida);
+        query.setParameter("criador", criador);
+        query.setParameter("prioridade", prioridade);
+        query.setParameter("responsavel", responsavel);
+
+        Long count = (Long) query.getSingleResult();
+                
+        if(count > 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
     
     public String criarTarefa(String titulo, String descricao, Date data_criada, Date data_finalizada, boolean concluida, Pessoa criador , boolean prioridade , String responsavel) throws ParseException{
-
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-
-        if(titulo == null || titulo.isEmpty() || descricao == null || descricao.isEmpty() || data_finalizada == null ){
-            return "Preencha Todos os Campos";
-        }
         
         Pessoa pessoaResponsavel = buscarPessoaPorNome(responsavel);
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
         
-        
-        
-        
-        
+        if(titulo == null || titulo.isEmpty() || descricao == null || descricao.isEmpty() || data_finalizada == null ){
+            return "Preencha Todos os Campos";
+        }else if(verificarTarefa(titulo, descricao, data_criada, data_finalizada, concluida, criador, prioridade, pessoaResponsavel)){
+            return "Esta Tarefa já foi Criada";
+        }
         
         
         
@@ -132,7 +158,15 @@ public class banco_config{
 
         em.persist(tarefa);
         transaction.commit();
-        return "ok";
+        return "Tarefa criada com Sucesso";
+    }
+    
+    public List<Tarefas> tarefaUsuario(Pessoa pessoalogada) {
+        String sqlQuery = "SELECT t FROM Tarefas t WHERE t.responsavel = :responsavel"; 
+        Query query = em.createQuery(sqlQuery);
+        query.setParameter("responsavel", pessoalogada);
+
+        return query.getResultList();
     }
 
 }

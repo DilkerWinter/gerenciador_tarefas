@@ -1,4 +1,5 @@
 
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -94,7 +95,7 @@ public class tela_login extends JFrame{
         public void actionPerformed(ActionEvent e) {
             banco_config bancoConfig = new banco_config();
             boolean loginvalido = bancoConfig.verificar_login(email_login.getText(), senha_login.getText());
-            app app = new app(); 
+            tela_app app = new tela_app(); 
                 if (loginvalido) {
                      dispose();
                      app.iniciarApp();

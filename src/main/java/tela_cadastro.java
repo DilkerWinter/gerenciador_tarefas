@@ -1,4 +1,6 @@
 
+
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -69,9 +71,9 @@ public class tela_cadastro extends JFrame{
         btn_cadastrar.setBounds(175 ,250, 100, 25);
         this.add(btn_cadastrar);
         
+        
         mensagem = new JLabel();
         mensagem.setBounds(25, 50, 300, 25);
-        mensagem.setForeground(Color.red);
         this.add(mensagem);
         
         btn_voltar = new JButton("Voltar");
@@ -87,7 +89,9 @@ public class tela_cadastro extends JFrame{
                 
                 switch (validar_cadastro) {
                     case "ok":
-                        dispose();
+                       mensagem.setText("Conta Criada com Sucesso!");
+                       mensagem.setForeground(Color.GREEN);
+
                     {
                         try {
                             tela_login iniciar_login = new tela_login();
@@ -100,19 +104,25 @@ public class tela_cadastro extends JFrame{
 
                     case "Preencha todos os campos":
                         mensagem.setText("Preencha todos os campos");
+                        mensagem.setForeground(Color.red);
+
                         break;
                     case "Email já registrado":
                         mensagem.setText("Email já registrado");
+                        mensagem.setForeground(Color.red);
                         break;
                     case "Nome já registrado":
                         mensagem.setText("Nome já registrado");
+                        mensagem.setForeground(Color.red);
                         break;
                     case "Erro no Sistema":
                         mensagem.setText("Erro no Sistema");
+                        mensagem.setForeground(Color.red);
                         break;
                         
                     default:
                         mensagem.setText("Ai nem eu posso te ajuda");
+                        mensagem.setForeground(Color.red);
                 }
             
             }
