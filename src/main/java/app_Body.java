@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -28,20 +29,18 @@ public class app_Body extends JPanel{
         Pessoa pessoalogada = UsuarioLogado.getPessoa();
         List<Tarefas> listatarefas = iniciarBanco.tarefaUsuario(pessoalogada);
         
-        JPanel panelTarefas = new JPanel();
-        panelTarefas.setLayout(new BoxLayout(panelTarefas, BoxLayout.Y_AXIS));
+        JList listTarefas = new JList();
+        listTarefas.setLayout(new BoxLayout(listTarefas, BoxLayout.Y_AXIS));
         
         for (Tarefas tarefa : listatarefas) {
         component_Tarefas componenteTarefas = new component_Tarefas(tarefa);
         
-        panelTarefas.add(componenteTarefas);
+        listTarefas.add(componenteTarefas);
         }
-        panelTarefas.setSize(1200, 600);
-        scroll_tarefas = new JScrollPane();
-        scroll_tarefas.setViewportView(panelTarefas);
+        listTarefas.setSize(1200, 600);
+        scroll_tarefas = new JScrollPane(listTarefas);
         scroll_tarefas.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scroll_tarefas.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        panelTarefas.setVisible(true);
         scroll_tarefas.setBackground(new Color(0xFAF0E6));
         scroll_tarefas.setBounds(165, 60, 1025, 500);
         this.add(scroll_tarefas);

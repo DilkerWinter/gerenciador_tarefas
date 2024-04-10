@@ -5,6 +5,7 @@ tela_criador_tarefa.class
 banco_config.class
 tela_app.class
 tela_cadastro$2.class
+component_Tarefas$1.class
 Pessoa.class
 tela_cadastro.class
 UsuarioLogado.class

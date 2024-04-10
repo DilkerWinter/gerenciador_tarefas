@@ -167,5 +167,7 @@ public class banco_config{
         query.setParameter("responsavel", pessoalogada);
         return query.getResultList();
     }
+    
+    //SELECT * FROM tarefas WHERE id = 73; criar para deletar do banco tarefa especifica exemplo
 
 }
