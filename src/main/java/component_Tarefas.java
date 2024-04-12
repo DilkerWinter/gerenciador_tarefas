@@ -82,7 +82,8 @@ public class component_Tarefas extends JPanel {
         btn_concluida.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //matar tarefa e deletar do banco
+                banco_config bancoConfig = new banco_config();
+                bancoConfig.concluirTarefa(tarefa.getID());
             }
         });
         

@@ -44,8 +44,13 @@ public class Tarefas {
     
     //GETTER E SETTER
     
-    //DATA CRIADA    (Recebe String e transforma em data)
-    public void setDataCriada(Date datacriada) throws ParseException{
+    //ID
+    public int getID(){
+        return this.id;
+    }
+    
+    //DATA CRIADA    
+    public void setDataCriada(Date datacriada){
         this.dataCriado = datacriada; 
     }
     public Date getDataCriada(){

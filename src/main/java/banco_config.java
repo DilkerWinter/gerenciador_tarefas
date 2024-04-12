@@ -162,12 +162,21 @@ public class banco_config{
     }
     
     public List<Tarefas> tarefaUsuario(Pessoa pessoalogada) {
-        String sqlQuery = "SELECT t FROM Tarefas t WHERE t.responsavel = :responsavel"; 
+        String sqlQuery = "SELECT t FROM Tarefas t WHERE t.responsavel = :responsavel AND t.concluida = false"; 
         Query query = em.createQuery(sqlQuery);
         query.setParameter("responsavel", pessoalogada);
         return query.getResultList();
     }
     
-    //SELECT * FROM tarefas WHERE id = 73; criar para deletar do banco tarefa especifica exemplo
+        public void concluirTarefa(int id) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        
+        String jpqlQuery = "UPDATE Tarefas t SET t.concluida = true WHERE t.id = :id"; 
+        Query query = em.createQuery(jpqlQuery);
+        query.setParameter("id", id);
+        transaction.commit();
+        
+    }
 
 }

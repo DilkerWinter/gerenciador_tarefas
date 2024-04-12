@@ -188,7 +188,7 @@ public class tela_criador_tarefa extends JFrame{
         }
     }
 
-    //Pega a data de hoje
+    //Pega a data de hoje e formata
     public Date data_atual() {
         LocalDate dataHoje = LocalDate.now();
         String dataHojeFormatada = dataHoje.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
