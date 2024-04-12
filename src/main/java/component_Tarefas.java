@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
 public class component_Tarefas extends JPanel {
     JLabel titulo, desc, data_entrega, dataentrega_label, criador, prioridade_text, criador_text;
@@ -20,7 +21,7 @@ public class component_Tarefas extends JPanel {
         
         //Titulo da tarefa
         titulo = new JLabel(tarefa.getTitulo());
-        titulo.setBounds(5, 20, 1000, 25);
+        titulo.setBounds(20, 20, 1000, 25);
         titulo.setVisible(true);
         titulo.setForeground(new Color(0xFAF0E6));
         titulo.setFont(new Font("JetBrainsMono", Font.BOLD, 26));
@@ -28,7 +29,7 @@ public class component_Tarefas extends JPanel {
         
         //Descricao da tarefa
         desc = new JLabel(tarefa.getDescricao());
-        desc.setBounds(5, 50, 1000, 25);
+        desc.setBounds(20, 50, 1000, 25);
         desc.setFont(new Font("JetBrainsMono", Font.BOLD, 16));
         desc.setVisible(true);
         desc.setForeground(new Color(0xFAF0E6));
@@ -52,16 +53,23 @@ public class component_Tarefas extends JPanel {
         btn_concluida = new JButton("Concluir Tarefa");
         btn_concluida.setVisible(true);
         btn_concluida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_concluida.setForeground(new Color(0xFAF0E6));
+        btn_concluida.setForeground(new Color(0x352F44));
+        btn_concluida.setFocusPainted(false);
+        btn_concluida.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn_concluida.setBackground(new Color(0xB9B4C7));
         btn_concluida.setBounds(865, 70, 135, 30);
         this.add(btn_concluida);
+        
+        JSeparator separator = new JSeparator();
+        separator.setBounds(40, 245, 920, 10); // Ajuste conforme necessário
+        separator.setForeground(new Color(0x5C5470)); // Cor do separador
+        this.add(separator);
         
         //Prioridade para Tarefa
         if(tarefa.getPrioridade() == true){
             prioridade_text = new JLabel("Urgente:");
             prioridade_text.setForeground(Color.red);
-            prioridade_text.setBounds(5, 0, 100, 25);
+            prioridade_text.setBounds(20, 0, 100, 25);
             prioridade_text.setVisible(true);
             this.add(prioridade_text);
         }
