@@ -144,8 +144,6 @@ public class banco_config{
             return "Esta Tarefa já foi Criada";
         }
         
-        
-        
         Tarefas tarefa = new Tarefas();
         tarefa.setTitulo(titulo);
         tarefa.setDescricao(descricao);

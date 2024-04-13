@@ -30,7 +30,6 @@ public class app_Body extends JPanel{
         
         JList listTarefas = new JList();
         
-        
         for (Tarefas tarefa : listatarefas) {
         component_Tarefas componenteTarefas = new component_Tarefas(tarefa);
         
