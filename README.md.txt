@@ -1,6 +1,8 @@
+<p align="center">
+<img src="https://readme-typing-svg.demolab.com?font=&weight=600&size=26&pause=1000&color=DDDDDD&background=FFFFFF00&center=true&vCenter=true&random=false&width=550&height=75&lines=Gerenciador+de+Tarefas" alt="Typing SVG" /></a>
+</p>
 
-# Gerenciador de Tarefas
-
+## 📖 Descrição
 * Projeto feito em Java e SQL
 * Criador, Organizador e listagem de Tarefas
 
@@ -36,7 +38,7 @@ CREATE TABLE pessoas (
 );
 ```
 
-## Futuras Atualizações
+## 🚀 Futuras Atualizações
 
 Este projeto está sendo atualizado diariamente, com algumas metas:
 
@@ -46,8 +48,10 @@ Este projeto está sendo atualizado diariamente, com algumas metas:
 - [ ] Refazer o Design das Telas
 - [ ] Melhorar Interface
 - [ ] Trazer mais Funcionalidades
+- [ ] Arrumar Separator
+- [ ] Arrumar Tamanho da Lista de Tarefas
  
 
-## Tecnologias
+## 🤖 Tecnologias
 
 <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"> <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white">
