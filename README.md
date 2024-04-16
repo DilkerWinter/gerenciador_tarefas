@@ -50,7 +50,8 @@ Este projeto está sendo atualizado diariamente, com algumas metas:
 - [ ] Trazer mais Funcionalidades
 - [ ] Arrumar Separator
 - [ ] Arrumar Tamanho da Lista de Tarefas
- 
+- [x] Arrumar conclusao de tarefas
+
 
 ## 🤖 Tecnologias
 

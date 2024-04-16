@@ -167,14 +167,13 @@ public class banco_config{
     }
     
         public void concluirTarefa(int id) {
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        
-        String jpqlQuery = "UPDATE Tarefas t SET t.concluida = true WHERE t.id = :id"; 
-        Query query = em.createQuery(jpqlQuery);
-        query.setParameter("id", id);
-        transaction.commit();
-        
+            EntityTransaction transaction = em.getTransaction();
+            transaction.begin();
+            String jpqlQuery = "UPDATE Tarefas t SET t.concluida = true WHERE t.id = :id";
+            Query query = em.createQuery(jpqlQuery);
+            query.setParameter("id", id);
+            query.executeUpdate();
+            transaction.commit();
     }
 
 }

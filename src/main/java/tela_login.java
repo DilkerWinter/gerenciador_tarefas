@@ -20,8 +20,7 @@ public class tela_login extends JFrame{
     JTextField email_login;
     JLabel texto_senha, texto_email, title , mensagem;
     JButton btn_cadastro, btn_login;
-    
-    
+
     tela_login() throws IOException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(315,300);
