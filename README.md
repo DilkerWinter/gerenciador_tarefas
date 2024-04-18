@@ -10,7 +10,16 @@
 ### Banco de Dados
 Para criar um banco de dados valido utilize estas querys em seu postgres SQL
 
+#### Pessoas:
 
+```
+CREATE TABLE pessoas (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(100) NOT NULL
+);
+```
 #### Tarefas:
 ```
 CREATE TABLE tarefas (
@@ -27,24 +36,14 @@ CREATE TABLE tarefas (
     FOREIGN KEY (responsavel_id) REFERENCES pessoas(id)
 );
 ```
-#### Pessoas:
-
-```
-CREATE TABLE pessoas (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    senha VARCHAR(100) NOT NULL
-);
-```
 
 ## 🚀 Futuras Atualizações
 
 Este projeto está sendo atualizado diariamente, com algumas metas:
 
-- [ ] Atualizar Tela Automaticamente
+- [x] Atualizar Tela Automaticamente
 - [ ] Adicionar Notificações
-- [ ] Arrumar Listagem de Tarefas
+- [x] Arrumar Listagem de Tarefas
 - [ ] Refazer o Design das Telas
 - [ ] Melhorar Interface
 - [ ] Trazer mais Funcionalidades

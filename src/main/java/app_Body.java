@@ -30,7 +30,7 @@ public class app_Body extends JPanel{
 
         scroll_tarefas = new JScrollPane(allTasks);
         scroll_tarefas.setBackground(new Color(0xFAF0E6));
-        scroll_tarefas.setBounds(165, 60, 1025, 350);
+        scroll_tarefas.setBounds(165, 60, 1030, 465);
         
         this.add(scroll_tarefas);
         scroll_tarefas.revalidate();
