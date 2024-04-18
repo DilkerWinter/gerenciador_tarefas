@@ -10,9 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class app_Header extends JPanel{
+
+    app_Body parent;
+
     JButton btn_criarTarefa;
     JLabel app_title;
-    public app_Header(){
+    public app_Header(app_Body parent){
+
+        this.parent = parent;
         this.setSize(1200,90);
         this.setLayout(null);
         this.setBackground(new Color(0x352F44));
@@ -40,10 +45,15 @@ public class app_Header extends JPanel{
                 tela_criador_tarefa iniciarCriadorTarefa = null;
                 try {
                     iniciarCriadorTarefa = new tela_criador_tarefa();
+
+                    //Aqui eu atualizo
                 } catch (ParseException ex) {
                     Logger.getLogger(app_Header.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 iniciarCriadorTarefa.criar_tarefa();
+                if(parent != null) {
+                    parent.update();
+                }
             }
         });
     }

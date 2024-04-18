@@ -1,5 +1,4 @@
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -13,12 +12,19 @@ public class component_Tarefas extends JPanel {
     JLabel titulo, desc, data_entrega, dataentrega_label, criador, prioridade_text, criador_text;
     JButton btn_concluida;
 
-    public component_Tarefas(Tarefas tarefa) {
-        this.setSize(1035, 500); 
+    app_Body parent;
+
+    public component_Tarefas(Tarefas tarefa,app_Body body) {
+        this.parent = body;
+
         this.setBackground(new Color(0x352F44));
         this.setLayout(null);
         this.setVisible(true);
-        
+
+        this.setMaximumSize(new Dimension(this.getMaximumSize().width,300));
+        this.setMinimumSize(new Dimension(this.getMinimumSize().width,300));
+        this.setPreferredSize(new Dimension(this.getPreferredSize().width,300));
+
         //Titulo da tarefa
         titulo = new JLabel(tarefa.getTitulo());
         titulo.setBounds(20, 20, 1000, 25);
@@ -92,6 +98,9 @@ public class component_Tarefas extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 banco_config bancoConfig = new banco_config();
                 bancoConfig.concluirTarefa(tarefa.getID());
+                if(parent != null) {
+                    parent.update();
+                }
             }
         });
         

@@ -2,11 +2,8 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
+
 import com.toedter.calendar.JDateChooser;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -19,12 +16,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 
-public class tela_criador_tarefa extends JFrame{
+public class tela_criador_tarefa extends JDialog {
     
     JLabel app_title , app_desc , texto_titulo, texto_descricao, texto_DataInicio, texto_DataFim, data_inicio, texto_prioridade, texto_responsavel;
     JTextField tarefa_titulo;
@@ -36,6 +29,7 @@ public class tela_criador_tarefa extends JFrame{
     
     
     tela_criador_tarefa() throws ParseException {
+        setModal(true);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(500,500);
         this.setTitle("Criar Tarefa");

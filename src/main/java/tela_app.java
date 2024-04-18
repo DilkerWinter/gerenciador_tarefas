@@ -23,16 +23,18 @@ public class tela_app extends JFrame {
             setIconImage(iconImage);
         } catch (IOException e) {
         }
-        
-        //Header
-        app_header = new app_Header();
-        app_header.setBounds(0, 0, 1200, 90);
-        this.add(app_header);
-        
+
+
         //Body
         app_body = new app_Body();
         app_body.setBounds(0, 90, 1200, 560);
         this.add(app_body);
+
+        //Header
+        app_header = new app_Header(app_body);
+        app_header.setBounds(0, 0, 1200, 90);
+        this.add(app_header);
+
     }
 
     public void iniciarApp() {

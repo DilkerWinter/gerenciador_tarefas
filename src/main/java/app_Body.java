@@ -10,7 +10,10 @@ import javax.swing.JScrollPane;
 public class app_Body extends JPanel{
     JLabel title_tarefas;
     JScrollPane scroll_tarefas;
-    
+    JLabel notficacao_tarefas;
+
+    JPanel allTasks = new JPanel();
+
     public app_Body(){
         this.setSize(1200, 560);
         this.setVisible(true);
@@ -22,28 +25,37 @@ public class app_Body extends JPanel{
         title_tarefas.setFont(new java.awt.Font("Segoe UI", 1, 36));
         title_tarefas.setBounds(165, 10, 300, 35);
         this.add(title_tarefas);
-        
-         
-        banco_config iniciarBanco = new banco_config();
-        Pessoa pessoalogada = UsuarioLogado.getPessoa();
-        List<Tarefas> listatarefas = iniciarBanco.tarefaUsuario(pessoalogada);
-        
-        JList listTarefas = new JList();
-        
-        for (Tarefas tarefa : listatarefas) {
-        component_Tarefas componenteTarefas = new component_Tarefas(tarefa);
-        
-        listTarefas.add(componenteTarefas);
-        }
-        listTarefas.setLayout(new BoxLayout(listTarefas, BoxLayout.Y_AXIS));
-        scroll_tarefas = new JScrollPane();
-        scroll_tarefas.setViewportView(listTarefas);
+
+        update();
+
+        scroll_tarefas = new JScrollPane(allTasks);
         scroll_tarefas.setBackground(new Color(0xFAF0E6));
-        scroll_tarefas.setBounds(165, 60, 1025, 500);
+        scroll_tarefas.setBounds(165, 60, 1025, 350);
         
         this.add(scroll_tarefas);
         scroll_tarefas.revalidate();
         scroll_tarefas.repaint();
+
+
     }
-    
+
+    public void update(){
+
+        allTasks.removeAll();
+        allTasks.invalidate();
+        banco_config iniciarBanco = new banco_config();
+        Pessoa pessoalogada = UsuarioLogado.getPessoa();
+
+        List<Tarefas> listatarefas = iniciarBanco.tarefaUsuario(pessoalogada);
+
+        System.out.println(listatarefas);
+
+        for (Tarefas tarefa : listatarefas) {
+            allTasks.add(new component_Tarefas(tarefa,this));
+        }
+        allTasks.setLayout(new BoxLayout(allTasks , BoxLayout.Y_AXIS));
+        allTasks.revalidate();
+        allTasks.repaint();
+    }
+
 }
