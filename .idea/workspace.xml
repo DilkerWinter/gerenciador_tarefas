@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff4f2fa7-668a-415a-a69a-5b935ba29461" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app_Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_Body.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/component_Tarefas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/component_Tarefas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app_Body.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app_Body.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/component_Tarefas$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/component_Tarefas$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/component_Tarefas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/component_Tarefas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/Pessoa_.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/Pessoa_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/Tarefas_.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/Tarefas_.java" afterDir="false" />
-    </list>
+    <list default="true" id="ff4f2fa7-668a-415a-a69a-5b935ba29461" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +90,7 @@
       <workItem from="1713442355913" duration="104000" />
       <workItem from="1713481093973" duration="2565000" />
       <workItem from="1713490069924" duration="504000" />
-      <workItem from="1713490944556" duration="1381000" />
+      <workItem from="1713490944556" duration="1571000" />
     </task>
     <servers />
   </component>

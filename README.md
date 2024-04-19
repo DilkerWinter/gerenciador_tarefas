@@ -50,7 +50,7 @@ Este projeto está sendo atualizado diariamente, com algumas metas:
 - [ ] Refazer o Design das Telas
 - [ ] Melhorar Interface
 - [ ] Trazer mais Funcionalidades
-- [ ] Arrumar Separator
+- [x] Arrumar Separator
 - [ ] Arrumar Tamanho da Lista de Tarefas
 - [x] Arrumar conclusao de tarefas
 
