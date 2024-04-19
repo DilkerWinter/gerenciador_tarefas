@@ -6,6 +6,9 @@
 * Projeto feito em Java e SQL
 * Criador, Organizador e listagem de Tarefas
 
+## 📷 Galeria
+![img.png](img.png)
+
 ## 💻 Pré-requisitos
 ### Banco de Dados
 Para criar um banco de dados valido utilize estas querys em seu postgres SQL

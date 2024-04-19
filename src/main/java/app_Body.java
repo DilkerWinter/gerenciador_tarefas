@@ -23,7 +23,7 @@ public class app_Body extends JPanel{
         title_tarefas = new JLabel("Minhas Tarefas");
         title_tarefas.setForeground(new Color(0x352F44));
         title_tarefas.setFont(new java.awt.Font("Segoe UI", 1, 36));
-        title_tarefas.setBounds(165, 10, 300, 35);
+        title_tarefas.setBounds(165, 10, 360, 35);
         this.add(title_tarefas);
 
         update();

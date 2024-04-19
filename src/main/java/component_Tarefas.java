@@ -21,22 +21,22 @@ public class component_Tarefas extends JPanel {
         this.setLayout(null);
         this.setVisible(true);
 
-        this.setMaximumSize(new Dimension(this.getMaximumSize().width,300));
-        this.setMinimumSize(new Dimension(this.getMinimumSize().width,300));
-        this.setPreferredSize(new Dimension(this.getPreferredSize().width,300));
+        this.setMaximumSize(new Dimension(this.getMaximumSize().width,160));
+        this.setMinimumSize(new Dimension(this.getMinimumSize().width,160));
+        this.setPreferredSize(new Dimension(this.getPreferredSize().width,160));
 
         //Titulo da tarefa
         titulo = new JLabel(tarefa.getTitulo());
-        titulo.setBounds(20, 20, 1000, 25);
+        titulo.setBounds(20, 25, 1000, 30);
         titulo.setVisible(true);
         titulo.setForeground(new Color(0xFAF0E6));
-        titulo.setFont(new Font("JetBrainsMono", Font.BOLD, 26));
+        titulo.setFont(new java.awt.Font("Segoe UI", 1, 26));
         this.add(titulo);
         
         //Descricao da tarefa
         desc = new JLabel(tarefa.getDescricao());
-        desc.setBounds(20, 50, 1000, 25);
-        desc.setFont(new Font("JetBrainsMono", Font.BOLD, 16));
+        desc.setBounds(20, 55, 1000, 25);
+        desc.setFont(new java.awt.Font("Segoe UI", 1, 16));
         desc.setVisible(true);
         desc.setForeground(new Color(0xFAF0E6));
         this.add(desc);
@@ -46,12 +46,12 @@ public class component_Tarefas extends JPanel {
         Date dataEntregaSQL = tarefa.getDataEntrega();
         String dataEntregaFormatada = formatoData.format(dataEntregaSQL);
         data_entrega = new JLabel(dataEntregaFormatada);
-        data_entrega.setBounds(940, 10, 100, 25);
+        data_entrega.setBounds(920, 10, 140, 25);
         data_entrega.setVisible(true);
         data_entrega.setForeground(new Color(0xB9B4C7));
         this.add(data_entrega);
         dataentrega_label = new JLabel("Data de Entrega:");
-        dataentrega_label.setBounds(843, 9, 100, 25);
+        dataentrega_label.setBounds(797, 9, 150, 25);
         dataentrega_label.setVisible(true);
         dataentrega_label.setForeground(new Color(0xB9B4C7));
         this.add(dataentrega_label);
@@ -65,9 +65,10 @@ public class component_Tarefas extends JPanel {
         btn_concluida.setBackground(new Color(0xB9B4C7));
         btn_concluida.setBounds(865, 70, 135, 30);
         this.add(btn_concluida);
-        
+
+        //Separador
         JSeparator separator = new JSeparator();
-        separator.setBounds(40, 245, 920, 10); // Ajuste conforme necessário
+        separator.setBounds(40, 150, 920, 10); // Ajuste conforme necessário
         separator.setForeground(new Color(0x5C5470)); // Cor do separador
         this.add(separator);
         
@@ -84,12 +85,12 @@ public class component_Tarefas extends JPanel {
         if(tarefa.getCriador() != tarefa.getResponsavel()){
             criador_text = new JLabel("Criado Por:");
             criador_text.setForeground(new Color(0xB9B4C7));
-            criador_text.setBounds(874, 25, 100, 25);
+            criador_text.setBounds(839, 25, 100, 25);
             criador_text.setVisible(true);
             this.add(criador_text);
             criador = new JLabel(tarefa.getCriador().getNome());
             criador.setForeground(new Color(0xB9B4C7));
-            criador.setBounds(941, 25, 100, 25);
+            criador.setBounds(922, 25, 100, 25);
             criador.setVisible(true);
             this.add(criador);
         }
