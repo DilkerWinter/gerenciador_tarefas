@@ -5,7 +5,7 @@
 ## 📖 Descrição
 * Projeto feito em Java e SQL
 * Criador, Organizador e listagem de Tarefas
-* Agradecimento ao [Jefferson Marques](https://github.com/JheffersonMarques) pela ajuda em alguns erros
+* Agradecimento ao [Jefferson Marques](https://github.com/JheffersonMarques) pela ajuda em arrumar alguns erros
 
 ## 📷 Galeria
 ![img.png](img.png)
