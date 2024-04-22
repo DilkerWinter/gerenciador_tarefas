@@ -55,17 +55,20 @@ public class app_Body extends JPanel{
 
     }
 
-    public void getNotifys(){
+    /*public void getNotifys(){
         banco_config bancoConfig = new banco_config();
         List<Tarefas> tarefas_notificacao = bancoConfig.VerificarNotificacoes();
+        notify_tarefas_Label = new JLabel(tarefas.getTitulo());
+        notify_tarefas_Label.setForeground(new Color(0xFAF0E6));
+        notify_tarefas_Label.setFont(new Font("Segoe UI", 1, 12));
         for (Tarefas tarefas : tarefas_notificacao) {
-            notify_tarefas_Label = new JLabel(tarefas.getTitulo());
-            notify_tarefas_Label.setForeground(new Color(0xFAF0E6));
-            notify_tarefas_Label.setFont(new Font("Segoe UI", 1, 12));
-            this.add(notify_tarefas_Label);
-        }
 
-    }
+
+
+        }
+        notficacao_tarefas.setLayout(new BoxLayout(allTasks , BoxLayout.Y_AXIS));
+
+    }*/
 
 
     public void update(){
