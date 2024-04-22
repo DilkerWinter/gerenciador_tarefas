@@ -1,18 +1,18 @@
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class app_Body extends JPanel{
     JLabel title_tarefas;
     JScrollPane scroll_tarefas;
-    JLabel notficacao_tarefas;
-
+    JPanel notficacao_tarefas;
     JPanel allTasks = new JPanel();
+    JLabel notfy_Label = new JLabel();
+    JLabel notify_tarefas_Label = new JLabel();
 
     public app_Body(){
         this.setSize(1200, 560);
@@ -36,8 +36,37 @@ public class app_Body extends JPanel{
         scroll_tarefas.revalidate();
         scroll_tarefas.repaint();
 
+        notfy_Label = new JLabel("Notificações");
+        notfy_Label.setForeground(new Color(0xFAF0E6));
+        notfy_Label.setBounds(5, 365, 165, 25);
+        notfy_Label.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        this.add(notfy_Label);
+
+        getNotifys();
+
+        notficacao_tarefas = new JPanel();
+        notficacao_tarefas.setBackground(new Color(0x5C5470));
+        notficacao_tarefas.setBounds(0, 365, 165, 160);
+        this.add(notficacao_tarefas);
+
+
+
+
 
     }
+
+    public void getNotifys(){
+        banco_config bancoConfig = new banco_config();
+        List<Tarefas> tarefas_notificacao = bancoConfig.VerificarNotificacoes();
+        for (Tarefas tarefas : tarefas_notificacao) {
+            notify_tarefas_Label = new JLabel(tarefas.getTitulo());
+            notify_tarefas_Label.setForeground(new Color(0xFAF0E6));
+            notify_tarefas_Label.setFont(new Font("Segoe UI", 1, 12));
+            this.add(notify_tarefas_Label);
+        }
+
+    }
+
 
     public void update(){
 

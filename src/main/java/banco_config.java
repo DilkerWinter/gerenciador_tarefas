@@ -1,5 +1,6 @@
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -166,7 +167,7 @@ public class banco_config{
         return query.getResultList();
     }
     
-        public void concluirTarefa(int id) {
+    public void concluirTarefa(int id) {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
             String jpqlQuery = "UPDATE Tarefas t SET t.concluida = true WHERE t.id = :id";
@@ -174,6 +175,15 @@ public class banco_config{
             query.setParameter("id", id);
             query.executeUpdate();
             transaction.commit();
+    }
+    public List<Tarefas> VerificarNotificacoes() {
+        LocalDate dataAtual = LocalDate.now();
+        LocalDate dataLimite = dataAtual.plusDays(3);
+        String jpqlQuery = "SELECT t FROM Tarefas t WHERE t.dataEntrega BETWEEN :dataAtual AND :dataLimite";
+        Query query = em.createQuery(jpqlQuery)
+                .setParameter("dataAtual", dataAtual)
+                .setParameter("dataLimite", dataLimite);
+        return query.getResultList();
     }
 
 }
