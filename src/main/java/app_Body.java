@@ -48,8 +48,6 @@ public class app_Body extends JPanel{
 
         List<Tarefas> listatarefas = iniciarBanco.tarefaUsuario(pessoalogada);
 
-        System.out.println(listatarefas);
-
         for (Tarefas tarefa : listatarefas) {
             allTasks.add(new component_Tarefas(tarefa,this));
         }

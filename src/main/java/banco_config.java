@@ -81,15 +81,7 @@ public class banco_config{
             return "Erro no Sistema";
         }       
     }
-        
-    public List<Long> buscarIdsPessoas() {
-        Query query = em.createQuery("SELECT p.ID FROM Pessoa p");
-        return query.getResultList();
-    }
-    public List<Long> buscarNomesPessoas() {
-        Query query = em.createQuery("SELECT p.nome FROM Pessoa p");
-        return query.getResultList();
-    }
+
     
     public List<Pessoa> buscarTodasPessoas() {
         Query query = em.createQuery("SELECT p FROM Pessoa p");
@@ -175,15 +167,6 @@ public class banco_config{
             query.setParameter("id", id);
             query.executeUpdate();
             transaction.commit();
-    }
-    public List<Tarefas> VerificarNotificacoes() {
-        LocalDate dataAtual = LocalDate.now();
-        LocalDate dataLimite = dataAtual.plusDays(3);
-        String jpqlQuery = "SELECT t FROM Tarefas t WHERE t.dataEntrega BETWEEN :dataAtual AND :dataLimite";
-        Query query = em.createQuery(jpqlQuery)
-                .setParameter("dataAtual", dataAtual)
-                .setParameter("dataLimite", dataLimite);
-        return query.getResultList();
     }
 
 }

@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ff4f2fa7-668a-415a-a69a-5b935ba29461" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UsuarioLogado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UsuarioLogado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app_Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app_Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/banco_config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/banco_config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/Pessoa_.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/Pessoa_.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +104,8 @@
       <workItem from="1713575199030" duration="44000" />
       <workItem from="1713825481742" duration="2771000" />
       <workItem from="1713891185159" duration="195000" />
+      <workItem from="1713891385410" duration="54000" />
+      <workItem from="1713901309164" duration="2870000" />
     </task>
     <servers />
   </component>
