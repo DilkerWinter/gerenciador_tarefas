@@ -46,13 +46,11 @@ CREATE TABLE tarefas (
 Este projeto está sendo atualizado diariamente, com algumas metas:
 
 - [x] Atualizar Tela Automaticamente
-- [ ] Adicionar Notificações
 - [x] Arrumar Listagem de Tarefas
 - [ ] Refazer o Design das Telas
-- [ ] Melhorar Interface
-- [ ] Trazer mais Funcionalidades
+- [ ] Utilizar Layout para Interface
 - [x] Arrumar Separator
-- [ ] Arrumar Tamanho da Lista de Tarefas
+- [x] Arrumar Tamanho da Lista de Tarefas
 - [x] Arrumar conclusao de tarefas
 
 
